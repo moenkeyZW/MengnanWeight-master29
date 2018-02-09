@@ -1,0 +1,50 @@
+<!--pages/my/index.wxml-->
+<view class='container'>
+  <form bindsubmit="saveHandle" class='form'>
+    <view class="section">
+      <label class="title" style='line-height: 2.4rem'>头像</label>
+      <image src='{{userInfo.avatarUrl}}' class='avatar'></image>
+      <input name="avatar" value='{{userInfo.avatarUrl}}' style="display: none"></input>
+    </view>
+    <view class="section">
+      <label class="title">昵称</label>
+      <input placeholder="昵称" class="content" value='{{userInfo.nickName}}' name="nickName"/>
+    </view>
+      <view class="section">
+      <label class="title">性别</label>
+      <picker bindchange="pickGender" value="{{index}}" range="{{genderArray}}">
+        <input name="gender" placeholder="性别" class="content" value='{{userInfo.gender === 1? "男": "女"}}' disabled/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">年龄</label>
+       <picker bindchange="pickAge" value='{{index||userInfo.age}}' range="{{ageArr}}" > 
+         <input name="age" type="number" placeholder="年龄" class="content" value='{{userInfo.age}}' disabled='true' />
+       </picker> 
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">身高</label>
+      <picker bindchange="pickHeight" value='{{userInfo.height || index}}' range="{{heightArr}}" > 
+        <input name="height" type="number" placeholder="身高(cm)" class="content" value='{{userInfo.height}}' disabled='true'/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <!-- 
+    <view class="section">
+      <label class="title">体重</label>
+      <input placeholder="体重" class="content" value='{{userInfo.weight}}' name="weight"/>
+    </view>
+    -->
+    <view class="btn-area">
+      <button formType="submit" class='primary'>保存</button>
+    </view>
+  </form>
+</view>

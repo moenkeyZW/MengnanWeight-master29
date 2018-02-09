@@ -1,0 +1,159 @@
+<!--pages/health/index.wxml-->
+<view class="container">
+  <view class='header'>
+    <view class="score">
+      测量评分
+      <view class="gth">!</view>
+    </view>
+    <view class="userinfo">
+      <view class='avatar-wrapper'>
+        <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover">
+        </image>
+        <block>
+          <view class='gender male' wx:if="{{userInfo.gender === 1}}">
+            <image src='../../imgs/male.png' class='icon'></image>
+          </view>
+          <view class='gender female' wx:if="{{userInfo.gender === 2}}">
+            <image src='../../imgs/female.png' class='icon'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="awh">
+      <view class="age">
+        <view class="info">{{userInfo.age}}</view>
+        <view>年龄</view>
+      </view>
+      <view class="weight">
+        <view class="info">{{userInfo.weight}}kg</view>
+        <view>当前体重</view>
+      </view>
+      <view class="height">
+        <view class="info">{{userInfo.height}}</view>
+        <view>身高/cm</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="condition">
+    <view class="xian center">
+      <label class="stature">我的身材怎么样？</label>
+    </view>
+    <view class="bmi">
+      <view class="standard center">
+        <label class="bm">BMI</label>
+        <text class="num">19.4</text>
+        <text class="pian sport">（偏胖）</text>
+      </view>
+      <view class="now sport">目前常用的人体胖瘦标准</view>
+      <view class="img">
+        <image src="../../imgs/smpeople.png"></image>
+      </view>
+      <view class="data">
+        <view class="shou intro">偏瘦</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          10</view>
+        <view class="zheng intro">正常</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          18</view>
+        <view class="pang intro">偏胖</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          25</view>
+        <view class="fei intro">肥胖</view>
+      </view>
+    </view>
+    <view class="bmi">
+      <view class="standard center">
+        <label class="bm">体脂</label>
+        <text class="num">20.5</text>
+        <text class="pian sport">（偏胖）</text>
+      </view>
+      <view class="img">
+        <image src="../../imgs/smpeople.png"></image>
+      </view>
+      <view class="data">
+        <view class="shou intro">偏瘦</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          10</view>
+        <view class="zheng intro">正常</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          18</view>
+        <view class="pang intro">偏胖</view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          25</view>
+        <view class="fei intro">肥胖</view>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="_intro">
+        <text class="fc">您目前的基础代谢率是962KCal</text> ,为了保证您的健康能达到较好的减肥效果，建议你每天摄入的总热为......
+      </view>
+    </view>
+    <view class="dream center fsz">
+      基于目前的身体状态，您的理想体重为
+    </view>
+    <view class="fc center">
+      50.2kg
+    </view>
+    <view class="zhu center">
+      注：不使用于孕妇或运动员
+    </view>
+  </scroll-view>
+
+  <view class="_condition">
+    <view class="xian center">
+      <label class="stature">我该怎么吃？</label>
+    </view>
+    <view>
+      <view class="standard center">
+        <label class="bm">预算热量</label>
+        <view>
+          <text class="num">1725</text>
+          <text class="pian sport">千卡</text>
+        </view>
+      </view>
+      <view class="now sport">目前常用的人体胖瘦标准</view>
+      <view class="_detail center">
+        <text> 1.降低热量的摄取；2.少吃脂肪类食物；3.减少食物的摄入量</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="_condition">
+    <view class="xian center">
+      <label class="stature">我该怎么运动？</label>
+    </view>
+    <view>
+      <view class="standard center">
+        <label class="bm">预算热量</label>
+        <text class="num">116~155</text>
+        <text class="pian sport">次/分钟</text>
+      </view>
+      <view class="now sport">目前常用的人体胖瘦标准</view>
+      <view class="_detail center">
+        <text> 1.降低热量的摄取；2.少吃脂肪类食物；3.减少食物的摄入量</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn">
+    <button formType="submit" class='primary'>查看测量评分</button>
+  </view>
+
+  <!-- <view class="bar">
+    <view class="icon">
+      <image src="../../imgs/shuju.png"></image>
+      <view class="health">健康</view>
+    </view>
+    <view class="icon">
+      <image src="../../imgs/my.png"></image>
+      <view class="my">我的</view>
+    </view>
+   </view> -->
+</view>

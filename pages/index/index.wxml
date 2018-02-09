@@ -1,0 +1,89 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='header'>
+    <view class="userinfo">
+      <view class='avatar-wrapper'>
+        <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover">
+        </image>
+        <block>
+          <view class='gender male' wx:if="{{userInfo.gender === 1}}">
+            <image src='../../imgs/male.png' class='icon'></image>
+          </view>
+          <view class='gender female' wx:if="{{userInfo.gender === 2}}">
+            <image src='../../imgs/female.png' class='icon'></image>
+          </view>
+        </block>
+      </view>
+      <text class="nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  <view class='tip'>输入个人信息，查看您的健康状态</view>
+  <form bindsubmit="analyzeHandle" class='form'>
+    <view class="section disappear" style="display:{{isShowGender}}">
+      <label class="title">性别</label>
+      <picker bindchange="pickGender" value="{{index}}" range="{{genderArray}}">
+        <input name="gender" placeholder="性别" class="content" value='{{userInfo.gender === 1? "男": "女"}}' disabled/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section disappear"   style="display:{{isShowAge}}">
+      <label class="title">年龄</label>
+      <picker bindchange="pickAge" value='{{index||userInfo.age}}' range="{{ageArr}}" > 
+      <input name="age" type="number" placeholder="年龄" class="content" value='{{userInfo.age}}' disabled='true' />
+       </picker> 
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">身高</label>
+      <picker bindchange="pickHeight" value='{{userInfo.height || index}}' range="{{heightArr}}" > 
+        <input name="height" type="number" placeholder="身高(cm)" class="content" value='{{userInfo.height}}' disabled='true'/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">体重</label>
+      <picker bindchange="pickWeight" value='{{userInfo.weight || index}}' range="{{weightArr}}" > 
+        <input name="weight" type="number" placeholder="体重(kg)" class="content" value='{{userInfo.weight}}' disabled='true'/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" class='primary'>查看健康分析</button>
+    </view>
+  </form>
+ 
+  <view class='step' bindtap='openStepRecord' style='display:{{isShowStep}}'>
+    <view class='icon'>
+      <image src='../../imgs/step.png'></image>
+    </view>
+    <view class='record'>
+      <view>步数记录</view>
+      <view>{{ isOpenWXRun? '已消耗'+stepRecord.calorie+'千卡': '开启微信运动步数' }}</view>
+    </view>
+    <view class='open' catchtap="getWXRun">
+      {{ isOpenWXRun? stepRecord.count: '去开启' }}
+      <image src='../../imgs/arrow-blue.png'></image>
+    </view>
+  </view>
+  <view class='step' bindtap='openWeightRecord' style='display:{{isShowStep}}'>
+    <view class='icon'>
+      <image src='../../imgs/weight.png'></image>
+    </view>
+    <view class='record'>
+      <view>体重记录</view>
+      <view>{{ weightRecord.count? weightRecord.count+'步/'+weightRecord.calorie+'千卡': '暂无体重记录' }}</view>
+    </view>
+    <view class='open'>
+      <image src='../../imgs/arrow-blue.png'></image>
+    </view>
+  </view>
+
+</view>

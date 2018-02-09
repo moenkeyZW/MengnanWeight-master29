@@ -1,0 +1,84 @@
+<!--index.wxml-->
+<view class="container" style='background-color: #fff'>
+  <view hidden='{{curIndex !== 0}}' style='width: 100vw'>
+    <view class='header'>
+      <view class='content'>
+        <view class='title'>今日步数</view>
+        <view class='count'>1333</view>
+        <view class='goal'>目标：8888</view>
+      </view>
+    </view>
+    <view class='step one' bindtap='openStepRecord'>
+      <view class='icon'>
+        <image src='../../imgs/step.png'></image>
+      </view>
+      <view class='record'>
+        <view>今天走了0.9km</view>
+        <view>相当于节省了0.07升汽油</view>
+      </view>
+    </view>
+    <view class='step' bindtap='openStepRecord'>
+      <view class='icon'>
+        <image src='../../imgs/step.png'></image>
+      </view>
+      <view class='record'>
+        <view>消耗了1千卡</view>
+        <view>相当于燃烧了10克脂肪</view>
+      </view>
+    </view>
+    <view class='step' bindtap='openStepRecord'>
+      <view class='icon'>
+        <image src='../../imgs/step.png'></image>
+      </view>
+      <view class='record'>
+        <view>我的目标</view>
+        <view>8000步</view>
+      </view>
+      <view class='open' catchtap="getWXRun">
+        <image src='../../imgs/arrow-blue.png'></image>
+      </view>
+    </view>
+    <view class='step' bindtap='openStepRecord'>
+      <view class='icon'>
+        <image src='../../imgs/step.png'></image>
+      </view>
+      <view class='record'>
+        <view>运动来源</view>
+        <view>微信运动</view>
+      </view>
+    </view>
+  </view>
+  <view hidden='{{curIndex !== 1}}'>
+    <canvas canvas-id="stepChart" class="canvas" disable-scroll="true" bindtouchstart="touchHandler"></canvas>
+    <view class="down">
+    <view class="date">
+      <text>2018年1月</text>
+    </view>
+    <view class="detail">
+      <view class="lc">
+        <view class="ft">里程</view>
+        <view class="num">2.4KM</view>
+      </view>
+      <view class="xian"></view>
+      <view class="xh">
+        <view class="ft">能量消耗</view>
+        <view class="num">149Kcal</view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class='tab-bar'>
+    <view class='tab' data-index='{{0}}' bindtap='tabHandle'>
+      <view class='icon'>
+        <image src='../../imgs/today{{curIndex === 0? "_selected": ""}}.png'></image>
+      </view>
+      <view class='title {{curIndex === 0? "selected": ""}}'>今日</view>
+    </view>
+    <view class='tab' data-index='{{1}}' bindtap='tabHandle'>
+      <view class='icon'>
+        <image src='../../imgs/summary{{curIndex === 1? "_selected": ""}}.png'></image>
+      </view>
+      <view class='title {{curIndex === 1? "selected": ""}}'>统计</view>
+    </view>
+  </view>
+</view>

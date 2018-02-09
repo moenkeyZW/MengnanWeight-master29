@@ -1,0 +1,38 @@
+/* pages/my/index.wxss */
+@import '../../css/common.wxss';
+/* .container {
+  background-color: #f2f2f2;
+  width: 100vw;
+  height: 100vh
+} */
+.form {
+  width: calc(100% - 60rpx);
+  margin-top: 30rpx;
+}
+.section {
+  background-color: #fff;
+  border-radius: 8rpx;
+  display: flex;
+  justify-content:space-between;
+  padding: 20rpx 60rpx 20rpx 40rpx;
+  font-size: 28rpx;
+  margin-bottom: 4rpx;
+  position: relative;
+}
+.section:nth-child(2n) {
+  margin-bottom: 40rpx;
+}
+ .section .title {
+   line-height: 1.4rem;
+}
+.section .avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+.section .content {
+  text-align: right;
+} 
+.btn-area{
+  margin-top:100rpx;
+}

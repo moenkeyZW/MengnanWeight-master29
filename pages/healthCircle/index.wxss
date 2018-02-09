@@ -1,0 +1,146 @@
+/* pages/health/index.wxss */
+@import '../../css/common.wxss';
+@import '../index/index.wxss';
+
+.container{
+  color:#19b4f2;
+  font-family: "微软雅黑";
+}
+.yipan image{
+  width:610rpx;
+  height:610rpx;
+}
+.yipan{
+  margin:30rpx 20rpx 0 0;
+  position: relative;
+}
+.wh{
+  position: absolute;
+  top:149rpx;
+  left:242rpx;
+}
+.weight{
+  border-bottom:4rpx solid #A8DDF2;
+}
+.fThree{
+  font-size:100rpx;
+}
+.ck{
+  font-size:30rpx;
+}
+.ost{
+  font-size:68rpx;
+}
+.fat{
+  display: inline-block;
+  width:40rpx;
+  font-size:28rpx;
+}
+
+
+.detail{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size:26rpx;
+}
+.detail>view{
+  padding:0 22rpx;
+}
+.xian,.normal{
+  margin-top:30rpx;
+}
+.xian{
+  color:#888;
+}
+.last,.change{
+  color:#666;
+}
+
+.perfect{
+  width:90%;
+  height:300rpx;
+  margin-top:50rpx;
+  background:#fff;
+  
+}
+.btn{
+  width:70%;
+  margin:0 auto;
+  padding-top:100rpx;
+}
+.copyright{
+  font-size:26rpx;
+  color:#888;
+  margin-top:46rpx;
+}
+
+.more{
+  padding-top:56rpx;
+  font-size:40rpx;
+}
+.dataAnalyse{
+  display:flex;
+  justify-content:column;
+  text-align: center;
+  padding-top:30rpx;
+  font-size: 32rpx;
+}
+.ddd{
+  color:#999;
+}
+.border{
+  border-right: 5rpx solid #888;
+  padding-right:55rpx;
+}
+.tizhi{
+  margin: 0 58rpx;
+}
+
+.daixie{
+  margin-left:58rpx;
+}
+.dreamWeight{
+  margin-left:42rpx;
+}
+.bmi{
+  margin-left:38rpx;
+}
+
+.dialog{
+  width:100%;
+}
+.msg{
+  width:100%;
+  padding-top:0;
+}
+.radius{
+  border-radius:0;
+}
+.section{
+  margin:18rpx 50rpx;
+}
+.btn-area {
+  margin:30rpx 50rpx;
+}
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.4);
+ 
+}
+.condition{
+  position: fixed;
+  width:100%;
+  background:#F2F2F2;
+  bottom:0;
+  z-index:12;
+}
+
+.content{
+  color:#666;
+}

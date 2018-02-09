@@ -1,0 +1,138 @@
+/**index.wxss**/
+@import '../../css/common.wxss';
+
+.header {
+  width: calc(100% - 64rpx);
+  padding: 32rpx;
+  background-color: #19b4f2;
+}
+.tip {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin: 30rpx 0;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+  border: 32rpx solid #30bcf3;
+}
+
+
+.gender {
+  position: absolute;
+  bottom: 50rpx;
+  right: 18rpx;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  line-height: 32rpx;
+}
+
+.male {
+  background-color: #4675d0;
+}
+
+.female {
+  background-color: #fe5095;
+}
+
+.gender .icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.nickname {
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.form {
+  width: calc(100% - 60rpx);
+  margin-bottom: 30rpx;
+  /* margin-top: 30rpx; */
+}
+
+.section {
+  background-color: #fff;
+  border-radius: 8rpx;
+  display: flex  !important;
+  justify-content: space-between;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  padding-left: 40rpx;
+  padding-right: 60rpx;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+  position: relative;
+}
+
+.btn-area {
+  margin-top: 40rpx;
+}
+
+.section .title {
+  line-height: 1.4rem;
+}
+
+.section .content {
+  text-align: right;
+}
+
+.step {
+  width: calc(100% - 60rpx);
+  margin-bottom: 40rpx;
+  /* height: 300rpx; */
+  background-color: #fff;
+  padding: 20rpx 0;
+  position: relative;
+  
+}
+
+
+.step .icon {
+  width: 92rpx;
+  height: 92rpx;
+  display: inline-block;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.step,.record {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 28px;
+  border-radius:8rpx;
+}
+.step .record>view:last-child {
+  font-size: 14px;
+  color: #999;
+}
+
+.step .open {
+  position: absolute;
+  top: 52rpx;
+  right: 30rpx;
+  font-size: 16px;
+  color: #19b4f2;
+}
+
+.step .open image {
+  width: 16rpx;
+  height: 22rpx;
+}
+

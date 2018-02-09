@@ -1,0 +1,157 @@
+<!-- 页面1 -->
+<view class="container" wx:if="{{show}}">
+  <view class="yipan">
+    <image src="../../imgs/yipan.png"></image>
+    <view class="wh">
+      <view class="weight">
+        <text class="fThree">53</text>
+        <text class="ck">kg</text>
+      </view>
+      <view class="height" wx:if="{{height}}">
+        <text class="ost">172</text>
+        <text class="ck">cm</text>
+      </view>
+      <view  wx:else="{{fat}}">
+        <text class="fat">体脂</text>
+        <text class="ost">21%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail">
+    <view >
+      <view>--</view>
+      <view class="last">上一次</view>
+    </view>
+    <view class="xian">|</view>
+    <view >
+      <view>--</view>
+      <view class="change">变化</view>
+    </view>
+    <view class="xian">|</view>
+    <view class="normal">
+      <view>正常</view>
+    </view>
+  </view>
+
+  <view class="perfect">
+    <view class="btn">
+      <button formType="submit" class='primary'  bindtap="toggleDialog">+完善信息查看健康分析</button>
+    </view>
+  </view>
+
+  <view class="copyright">
+    <text>Copyright © 猛男称重</text>
+  </view>
+
+  <view class="dialog" hidden="{{flag}}">
+    <view class="mask" bindtap='hideHandle'></view>
+   <view class="condition">
+    <view class="btn msg">
+      <button formType="submit" class='primary radius'>完善信息</button>
+    </view>
+
+   <form bindsubmit="analyzeHandle" class='form'>
+    <view class="section">
+      <label class="title">性别</label>
+      <picker bindchange="pickGender" value="{{index}}" range="{{genderArray}}">
+        <input name="gender" placeholder="性别" class="content" value='{{userInfo.gender === 1? "男": "女"}}' disabled/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">年龄</label>
+       <picker bindchange="pickAge" value='{{index||userInfo.age}}' range="{{ageArr}}" > 
+         <input name="age" type="number" placeholder="年龄" class="content" value='{{userInfo.age}}' disabled='true' />
+       </picker> 
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="section">
+      <label class="title">身高</label>
+      <picker bindchange="pickHeight" value='{{userInfo.height || index}}' range="{{heightArr}}" > 
+        <input name="height" type="number" placeholder="身高(cm)" class="content" value='{{userInfo.height}}' disabled='true'/>
+      </picker>
+      <view class='right-arrow'>
+        <image src='../../imgs/arrow.png'></image>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" class='primary'>查看健康分析</button>
+    </view>
+   </form>
+   </view>
+  </view>
+</view>
+
+<!-- 页面2 -->
+<view class="container" wx:else>
+   <view class="yipan">
+    <image src="../../imgs/yipan.png"></image>
+    <view class="wh">
+      <view class="weight">
+        <text class="fThree">53</text>
+        <text class="ck">kg</text>
+      </view>
+      <view class="height" wx:if="{{height}}">
+        <text class="ost">172</text>
+        <text class="ck">cm</text>
+      </view>
+      <view  wx:else="{{fat}}">
+        <text class="fat">体脂</text>
+        <text class="ost">21%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail">
+    <view >
+      <view>53.5kg</view>
+      <view class="last">上一次</view>
+    </view>
+    <view class="xian">|</view>
+    <view >
+      <view class="down">
+        <text class="last">下降</text>↓
+      </view>
+      <view>0.5kg</view>
+    </view>
+    <view class="xian">|</view>
+    <view class="normal">
+      <view>正常</view>
+    </view>
+  </view>
+
+  <view class="perfect">
+    <view class="dataAnalyse">
+      <view class="border daixie">
+        <view>1700kcal</view>
+        <view class="ddd">代谢率</view>
+      </view>
+      <view class="border tizhi" wx:if="{{height}}">
+        <view>20%</view>
+        <view class="ddd">体脂</view>
+      </view>
+       <view class="border dreamWeight" wx:else="{{fat}}">
+        <view>60kg</view>
+        <view class="ddd">理想体重</view>
+      </view>
+      <view class="bmi">
+        <view>18</view>
+        <view class="ddd">BMI</view>
+      </view>  
+    </view>
+    <view class="btn more">
+      <button formType="submit" class='primary'>查看更多健康报告</button>
+    </view>
+  </view>
+
+  <view class="copyright">
+    <text>Copyright © 猛男称重</text>
+  </view>
+
+
+</view>
