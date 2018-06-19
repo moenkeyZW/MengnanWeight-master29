@@ -1,0 +1,200 @@
+<!--pages/health/index.wxml-->
+<view class="container">
+  <view class='header'>
+    <!-- <view class="score">
+      测量评分
+      <view class="gth">!</view>
+    </view> -->
+    <view class="userinfo">
+      <view class='avatar-wrapper'>
+        <image class="avatar" src="{{userInfo.avatarUrl}}">
+        </image>
+        <block>
+          <view class='gender male' wx:if="{{userInfo.gender === 1}}">
+            <image src='../../imgs/male.png' class='icon'></image>
+          </view>
+          <view class='gender female' wx:if="{{userInfo.gender === 2}}">
+            <image src='../../imgs/female.png' class='icon'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="awh">
+      <view class="age">
+        <view class="info">{{userInfo.age}}</view>
+        <view>年龄</view>
+      </view>
+      <view class="age">
+        <view class="info">{{userInfo.weight}}kg</view>
+        <view>当前体重</view>
+      </view>
+      <view class="height">
+        <view class="info">{{userInfo.height}}</view>
+        <view>身高/cm</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="_condition">
+    <view class="xian center">
+     
+      <label class="stature">我的身材怎么样？</label>
+    
+    </view>
+    <view class="bmi">
+      <view class="standard center">
+        <label class="bm">BMI</label>
+        <text class="num">{{analysisData.body.bmi}}</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bmiLevel === 0}}">（偏瘦）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bmiLevel === 1}}">（正常）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bmiLevel === 2}}">（偏胖）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bmiLevel === 3}}">（肥胖）</text>
+      </view>
+      <view class="now sport">目前常用的人体胖瘦标准</view>
+
+      <view class="data">
+
+        <view class="shou intro">偏瘦
+          <view class="img" wx:if="{{analysisData.body.bmiLevel === 0}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          19</view>
+        <view class="zheng intro">正常
+          <view class="img" wx:if="{{analysisData.body.bmiLevel === 1}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          24</view>
+        <view class="pang intro">偏胖
+          <view class="img" wx:if="{{analysisData.body.bmiLevel === 2}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          28</view>
+        <view class="fei intro">肥胖
+          <view class="img" wx:if="{{analysisData.body.bmiLevel === 3}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bmi">
+      <view class="standard center">
+        <label class="bm">体脂</label>
+        <text class="num">{{analysisData.body.bf}}</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bfLevel === 0}}">（偏瘦）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bfLevel === 1}}">（正常）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bfLevel === 2}}">（偏胖）</text>
+        <text class="pian sport" wx:if="{{analysisData.body.bfLevel === 3}}">（肥胖）</text>
+      </view>
+      <view class="data">
+        <view class="shou intro">偏瘦
+          <view class="img" wx:if="{{analysisData.body.bfLevel === 0}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          <text wx:if="{{userInfo.gender===1}}">10</text>
+          <text wx:if="{{userInfo.gender===2}}">15</text>
+        </view>
+        <view class="zheng intro">正常
+          <view class="img" wx:if="{{analysisData.body.bfLevel === 1}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          <text wx:if="{{userInfo.gender===1}}">15</text>
+          <text wx:if="{{userInfo.gender===2}}">20</text>
+        </view>
+        <view class="pang intro">偏胖
+          <view class="img" wx:if="{{analysisData.body.bfLevel === 2}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+        <view class="fsz">
+          <view class="transform">--</view>
+          <text wx:if="{{userInfo.gender===1}}">20</text>
+          <text wx:if="{{userInfo.gender===2}}">25</text>
+        </view>
+        <view class="fei intro">肥胖
+          <view class="img" wx:if="{{analysisData.body.bfLevel === 3}}">
+            <image src="../../imgs/smpeople.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="_intro">
+        <view class="fc center aBmr">{{analysisData.body.bmr}}KCal</view>
+        <view class="center kcalw">基础代谢率</view>
+      </view>
+      <view class="bor"></view>
+      <view class="_intro ppd">
+        <view class="fc center aBmr">{{analysisData.body.dreamWeight}}kg</view>
+        <view class="center kcalw">理想体重</view>
+      </view>
+    </view>
+    <view class="zhu center sport">
+    注：不试用于孕妇或运动员
+    </view>
+  </scroll-view>
+  <view class="_condition cartoon">
+    <view class="sug">{{analysisData.body.suggestion}}</view> 
+    <view class="crto" >
+      <image src="../../imgs/cartoon.png"></image>
+    </view>
+  </view>
+  <view class="_condition">
+    <view class="xian center">
+      <label class="stature">我该怎么吃?</label>
+    </view>
+    <view>
+      <view class="standard center">
+        <label class="bm">预算热量</label>
+        <view class="mid">
+          <text class="num">{{analysisData.eat.calorie}}</text>
+          <text class="pian sport">千卡</text>
+        </view>
+      </view>
+      <view class="now sport">在{{analysisData.eat.calOne}}~{{analysisData.eat.calTwo}}千卡的范围内都是合理的</view>
+      <view class="_detail">
+        <text class="lhe">{{analysisData.eat.eatSuggestion}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="_condition">
+    <view class="xian center">
+      <label class="stature">我该怎么运动？</label>
+    </view>
+    <view>
+      <view class="standard center">
+        <label class="bm">燃脂心率</label>
+        <view class="mid">
+          <text class="num">{{analysisData.sport.countOne}}~{{analysisData.sport.countTwo}}</text>
+          <text class="pian sport">次/分钟</text>
+        </view>
+      </view>
+      <view class="now sport">运动时，脂肪燃烧效率最高的心率范围</view>
+      <view class="_detail">
+        <text class="lhe">{{analysisData.sport.sportSuggestion}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="_condition">
+   <ad unit-id="adunit-de8f5735f3bc5f4e"></ad>
+  </view>
+
+  <!-- <view class="btn">
+    <button formType="submit" class='primary'>查看测量评分</button>
+  </view> -->
+</view>

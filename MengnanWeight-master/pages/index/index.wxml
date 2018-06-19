@@ -1,0 +1,323 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='header'>
+    <view class="userinfo">
+      <view class='avatar-wrapper'>
+        <block>
+          <view>
+            <!--wx:if="{{hasUserInfo}}"-->
+            <image class="avatar" src="{{userInfo.avatarUrl}}">
+            </image>
+          </view>
+        </block>
+        <block>
+          <view class='gender male' wx:if="{{userInfo.gender === 1}}">
+            <image src='../../imgs/male.png' class='icon'></image>
+          </view>
+          <view class='gender female' wx:if="{{userInfo.gender === 2}}">
+            <image src='../../imgs/female.png' class='icon'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='main step'>
+    <view class="shadow" style='color:#666' wx:if="{{isHaveShowRec}}" bindtap='openAnalysis'>
+      <view class="hei result">
+        <view class='result'>
+          <view class='whImgs'>
+            <image src='../../imgs/cheng-blue.png'></image>
+          </view>
+          <view class="tt">
+            <view class='ft'>体重</view>
+            <view class='font numColor'>{{showRec.weight}}kg</view>
+          </view>
+        </view>
+        <view class='result'>
+          <view class='whImg'>
+            <image src='../../imgs/height-blue.png'></image>
+          </view>
+          <view>
+            <view class='ft'>身高</view>
+            <view class='font numColor'>{{showRec.height}}cm</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{haveRecord && showRec.hopeWeight}}">
+        <view class="result detail borders">
+          <block wx:if="{{showRec.previousWeight}}">
+            <view class="daixie">
+              <view class='numColor'>{{showRec.previousWeight}}kg</view>
+              <view>上次称重</view>
+            </view>
+            <view wx:if="{{showRec.weight < showRec.previousWeight}}" class="daixie">
+              <view class='numColor'>{{showRec.compare}}kg</view>
+              <view>
+                <text>下降</text>
+                <text class="green">↓</text>
+              </view>
+            </view>
+            <view wx:elif="{{showRec.weight > showRec.previousWeight}}" class="daixie">
+              <view class='numColor'>{{showRec.compare}}kg</view>
+              <view>
+                <text>上升</text>
+                <text class="red">↑</text>
+              </view>
+            </view>
+            <view wx:else class="daixie">
+              <view class='numColor'>— —</view>
+              <view>变化</view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="daixie">
+              <view class='numColor'>— —</view>
+              <view>上次称重</view>
+            </view>
+            <view class="daixie">
+              <view class='numColor'>— —</view>
+              <view>变化</view>
+            </view>
+          </block>
+          <view class="daixie">
+            <view class='numColor'>{{showRec.hopeWeight}}kg</view>
+            <view class="">理想体重</view>
+          </view>
+        </view>
+        <view class="result detail borders">
+          <view class="daixie">
+            <view class='numColor'>{{showRec.bf}}</view>
+            <view class="">体脂率</view>
+          </view>
+          <view class="daixie">
+            <view class='numColor'>{{showRec.bmi}}</view>
+            <view class="">BMI</view>
+          </view>
+          <view class="daixie">
+            <view class='numColor'>{{showRec.bmr}}</view>
+            <view class="">基础代谢</view>
+          </view>
+        </view>
+        <view class="more numColor borders">
+          查看健康报告
+          <view class="jiantou">
+            <image src='../../imgs/jiantou.png'></image>
+          </view>
+        </view>
+      </view>
+      <view wx:else style='color:#CCC'>
+        <view class="result detail borders ">
+          <view class="daixie">
+            <view>— —</view>
+            <view>上次称重</view>
+          </view>
+          <view class="daixie">
+            <view>— —</view>
+            <view>变化</view>
+          </view>
+          <view class="daixie">
+            <view>— —</view>
+            <view>理想体重</view>
+          </view>
+        </view>
+        <view class="result detail borders ">
+          <view class="daixie ">
+            <view>— —</view>
+            <view>体脂率</view>
+          </view>
+          <view class="daixie ">
+            <view>— —</view>
+            <view>BMI</view>
+          </view>
+          <view class="daixie ">
+            <view>— —</view>
+            <view>基础代谢</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style='color:#CCC' wx:else>
+      <view class="hei result ">
+        <view class='result'>
+          <view class='whImgs'>
+            <image src='../../imgs/cheng.png'></image>
+          </view>
+          <view class="tt ">
+            <view class='ft'>体重</view>
+            <view class='font'>00.0kg</view>
+          </view>
+        </view>
+        <view class='result'>
+          <view class='whImg'>
+            <image src='../../imgs/height.png'></image>
+          </view>
+          <view>
+            <view class='ft'>身高</view>
+            <view class='font'>000cm</view>
+          </view>
+        </view>
+      </view>
+      <view class="result detail borders ">
+        <view class="daixie">
+          <view>— —</view>
+          <view>上次称重</view>
+        </view>
+        <view class="daixie">
+          <view>— —</view>
+          <view>变化</view>
+        </view>
+        <view class="daixie">
+          <view>— —</view>
+          <view>理想体重</view>
+        </view>
+      </view>
+      <view class="result detail borders">
+        <view class="daixie ">
+          <view>— —</view>
+          <view>体脂率</view>
+        </view>
+        <view class="daixie ">
+          <view>— —</view>
+          <view>BMI</view>
+        </view>
+        <view class="daixie ">
+          <view>— —</view>
+          <view>基础代谢</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{haveRecord && isHaveShowRec}}">
+    <view class='step weightRecord ss' bindtap='openWeightRecord'>
+      <view class='icon'>
+        <image src='../../imgs/weight.png'></image>
+      </view>
+      <view class='record'>
+        <view>体重记录</view>
+        <view class="kong ">查看趋势</view>
+      </view>
+      <view class="img ">
+        <image src='../../imgs/weight_line.png'></image>
+      </view>
+      <view class='open twoImg'>
+        <image src='../../imgs/arrow-blue.png'></image>
+      </view>
+    </view>
+    <view class='step ss' bindtap='navigateToStep'>
+      <view class='icon'>
+        <image src='../../imgs/step.png'></image>
+      </view>
+      <view class='record'>
+        <view>步数记录</view>
+        <view>{{ isOpenWXRun? '已消耗'+stepRecord.calorie+'千卡': '开启微信运动步数' }}</view>
+      </view>
+      <view class='open'>
+        {{ isOpenWXRun? stepRecord.count+'步': '去开启' }}
+        <image src='../../imgs/arrow-blue.png'></image>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <block wx:if="{{showRec.status===1}}">
+      <view class='btns btn-area'>
+        <button class='primary' bindtap="toggleDialogAge">+完善信息查看健康分析</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='zanwu'>
+        <image src='../../imgs/noNum.png'></image>
+      </view>
+      <view class='btns btn-are'>
+        <button class='primary' bindtap="toggleDialog">开始健康测评</button>
+      </view>
+    </block>
+  </block>
+  <view class="dialog" hidden="{{flag}}">
+    <view class="mask" bindtap='hideHandle'></view>
+    <view class="condition">
+      <view class="bt">
+        <button class='primary radius'>完善下方信息查看健康报告</button>
+      </view>
+      <form bindsubmit="analyzeHandle">
+        <radio-group class='put' name="gender" bindchange="changGender">
+          <label>
+            <radio value="1" hidden="true" />
+            <view class="hdf">
+              <image src='../../imgs/headMan{{userInfo.gender === 1? "_selected": ""}}.png'></image>
+            </view>
+          </label>
+          <view class='choss'>性别</view>
+          <label>
+            <radio value="2" hidden="true" />
+            <view class='hdr'>
+              <image src='../../imgs/headWoman{{userInfo.gender === 2? "_selected": ""}}.png'></image>
+            </view>
+          </label>
+        </radio-group>
+        <view class='cn'>
+          <view class='choss'>选择您的年龄</view>
+          <picker bindchange="pickAge" value='{{23||index}}' range="{{ageArr}}" name="age">
+            <view class='numColor xx'>{{age||24}}岁</view>
+          </picker>
+        </view>
+        <view class='cn'>
+          <view class='choss'>选择您的身高</view>
+          <picker bindchange="pickHeight" value='{{70||index}}' range="{{heightArr}}" name="height">
+            <view class='numColor xx'>{{height||170}}cm</view>
+          </picker>
+        </view>
+        <view class='cn'>
+          <view class='choss'>选择您的体重</view>
+          <picker bindchange="pickWeight" value='{{40||index}}' range="{{weightArr}}" name="weight">
+            <view class='numColor xx'>{{weight||60}}kg</view>
+          </picker>
+        </view>
+        <view class='dj'>点击下划线的内容进行操作</view>
+        <view class="db">
+          <button formType="submit" class='primary' disabled="{{disabled}}">确认</button>
+        </view>
+      </form>
+    </view>
+  </view>
+  <view class="dialog" hidden="{{flagAge}}">
+    <view class="mask" bindtap='hideHandle'></view>
+    <view class="condition">
+      <view class="bt">
+        <button class='primary radius'>完善下方信息查看健康报告</button>
+      </view>
+      <form bindsubmit="analyzeHandleAge" class='form'>
+        <radio-group class='put' name="gender" bindchange="changGender">
+          <label>
+            <radio value="1" hidden="true" />
+            <view class="hdf">
+              <image src='../../imgs/headMan{{userInfo.gender === 1? "_selected": ""}}.png'></image>
+            </view>
+          </label>
+          <view class='choss'>性别</view>
+          <label>
+            <radio value="2" hidden="true" />
+            <view class='hdr'>
+              <image src='../../imgs/headWoman{{userInfo.gender === 2? "_selected": ""}}.png'></image>
+            </view>
+          </label>
+        </radio-group>
+        <view class='cn'>
+          <view class='choss'>选择您的年龄</view>
+          <picker bindchange="pickAge" value='{{23||index}}' range="{{ageArr}}" name="age">
+            <view class='numColor xx'>{{age||24}}岁</view>
+          </picker>
+        </view>
+        <!-- <view class='cn'>
+          <view class='choss'>选择您的身高</view>
+          <picker bindchange="pickHeight" value='{{70||index}}' range="{{heightArr}}" name="height">
+            <view class='numColor xx'>{{height||170}}cm</view>
+          </picker>
+        </view> -->
+        <view class='dj'>点击下划线的内容进行操作</view>
+        <view class=" db">
+          <button formType="submit" class='primary' disabled="{{disabled}}">确认</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wxe28bb30028ed5d17",
+	"projectname": "0316-1",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "weight",
+					"pathName": "pages/weight/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "step",
+					"pathName": "pages/step/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "healthCircle",
+					"pathName": "pages/healthCircle/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "analysis",
+					"pathName": "pages/analysis/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/index",
+					"query": ""
+				}
+			]
+		}
+	}
+}

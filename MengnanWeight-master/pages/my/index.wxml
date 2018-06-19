@@ -1,0 +1,50 @@
+<!--pages/my/index.wxml-->
+<view class='container'>
+  <form bindsubmit="saveHandle" class='form'>
+    <view class="section">
+      <label class="title" style='line-height: 2.8rem'>头像</label>
+      <view wx:if="{{hasUserInfo}}">
+        <image src='{{userInfo.avatarUrl}}' class='avatar'></image>
+      </view>
+      <view wx:else>
+        <image class="avatar" src="../../imgs/avatar.png">
+        </image>
+      </view>
+    </view>
+    <view class="section nicheng">
+      <label class="title">昵称</label>
+      <view wx:if="{{hasUserInfo}}">
+        <input placeholder="昵称" class="content" value='{{userInfo.nickName}}' name="nickName" disabled/>
+      </view>
+      <view wx:else>
+        <input placeholder="昵称" class="content" value='养身者' name="养身者" disabled/>
+      </view>
+    </view>
+    <picker bindchange="pickGender" value="{{index}}" range="{{genderArray}}">
+      <view class="section">
+        <view class='wrapper'>
+          <label class="title">性别</label>
+          <input name="gender" class="content" value='{{userInfo.gender===1?"男":userInfo.gender===2?"女":""}}' disabled/>
+        </view>
+        <view class='right-arrow'>
+          <image src='../../imgs/arrow.png'></image>
+        </view>
+      </view>
+    </picker>
+    <picker bindchange="pickAge" value='{{24||(userInfo.age? userInfo.age-1: 0)||index}}' range="{{ageArr}}">
+      <view class="section nicheng">
+        <view class='wrapper'>
+          <label class="title">年龄</label>
+          <input name="age" type="number" class="content" value='{{age>0?age:userInfo.age>0?userInfo.age:""}}' disabled/>
+          <text class='unit' hidden='{{userInfo.age==0||userInfo.age==null}}'>岁</text>
+        </view>
+        <view class='right-arrow'>
+          <image src='../../imgs/arrow.png'></image>
+        </view>
+      </view>
+    </picker>
+    <view class="btn-area">
+      <button formType="submit" loading='{{showLoading}}' class='primary'>保存</button>
+    </view>
+  </form>
+</view>

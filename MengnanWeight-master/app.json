@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/step/index",
+    "pages/analysis/index",
+    "pages/my/index",
+    "pages/weight/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#19b4f2",
+    "navigationBarTitleText": "AI健康圈",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#19b4f2",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": true
+  },
+  "tabBar": {
+    "selectedColor": "#19b4f2",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./imgs/index.png",
+        "selectedIconPath": "./imgs/index_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath":"pages/my/index",
+        "iconPath": "./imgs/my.png",
+        "selectedIconPath": "./imgs/my_selected.png",
+        "text": "我的"
+      }
+       
+    ]
+  }
+}

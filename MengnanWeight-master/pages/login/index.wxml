@@ -1,0 +1,14 @@
+<!--pages/login/index.wxml-->
+<view class='container' wx:if="{{haveFullUserInfo}}">
+  <!--授权失败页面 -->
+    <view class="picture">
+      <view class='health'>HEALTH</view>
+      <view class="jk">健康</view>
+      <view class="sx">从体重管理开始</view>
+      <view>Starts With Weight Control</view>
+    </view>
+    <view class="goAuth">
+      <!-- <button bindtap="reAuthorize">重新授权</button> -->
+      <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">开启健康之旅</button>
+    </view>
+</view>

@@ -1,0 +1,40 @@
+/* pages/login/index.wxss */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #19b4f2;
+}
+
+
+.picture { 
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: "方正兰亭细黑_GBK";
+  margin-right:100rpx;
+}
+
+.health {
+  margin-top: 26%;
+  font-size: 110rpx;
+}
+.jk{
+  margin-top:70rpx;
+}
+.sx{
+  margin:16rpx 0;
+}
+
+.goAuth {
+  margin-top: 261rpx;
+  font-family: "Microsoft YaHei";
+}
+
+.goAuth>button {
+  background: #fff;
+  color: #19b4f2;
+  width: 350rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+}

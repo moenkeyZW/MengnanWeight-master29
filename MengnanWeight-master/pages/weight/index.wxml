@@ -1,0 +1,92 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='tab' bindtap='tabHandle'>
+    <view class='tabBtn {{curIndex === 0? "choosed": ""}}' data-index='{{0}}'>记录</view>
+    <view class='tabBtn {{curIndex === 1? "choosed": ""}}' data-index='{{1}}'>趋势</view>
+  </view>
+  <view hidden="{{curIndex !== 1}}"  style='display:{{display}}'>
+    <view class='chart'>
+      <view class='headers'>
+        <text class='title'>体重</text>
+        <text class='unit'>单位/kg</text>
+        <!-- <text class='time'>{{date}}</text> -->
+      </view>
+      <canvas canvas-id="weightChart" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    </view>
+    <view class='chart' >
+      <view class='headers'>
+        <text class='title'>体脂</text>
+        <text class='unit'>单位/%</text>
+        <!-- <text class='time'>{{date}}</text> -->
+      </view>
+      <canvas canvas-id="fatChart" class="canvas" disable-scroll="true" bindtouchstart="touchHandlers" bindtouchmove="moveHandlers" bindtouchend="touchEndHandlers"></canvas>
+    </view>
+    <view class="btn bb">
+      <button class='primary' bindtap='toggleDialog'>手动记录</button>
+    </view>
+  </view>
+  <view class="dialog" hidden="{{flag}}">
+    <view class="mask" bindtap='hideHandle'></view>
+    <view class="condition">
+      <view class="bt">
+        <button class='primary radius'>完善下方信息查看健康报告</button>
+      </view>
+      <form bindsubmit="analyzeHandle">
+        <view class='cn'>
+          <view class='choss'>选择您的身高</view>
+          <picker bindchange="pickHeight" value='{{70||index}}' range="{{heightArr}}" name="height">
+            <view class='numColor xx'>{{height||170}}cm</view>
+          </picker>
+        </view>
+        <view class='cn'>
+          <view class='choss'>选择您的体重</view>
+          <picker bindchange="pickWeight" value='{{40||index}}' range="{{weightArr}}" name="weight">
+            <view class='numColor xx'>{{weight||60}}kg</view>
+          </picker>
+        </view>
+        <view class='dj'>点击下划线的内容进行操作</view>
+        <view class="db">
+          <button formType="submit" class='primary' >确认</button>
+        </view>
+      </form>
+    </view>
+  </view>
+  <view hidden='{{curIndex !== 0}}' class="record">
+    <view class="record_detail" wx:for="{{weightList}}" wx:key="{{index}}" data-index="{{item.id}}" data-key="{{index}}" bindlongpress="deleteRecord">
+      <view>
+        <text class="date tus">{{item.date}}</text>
+      </view>
+      <view class="xian first">丨</view>
+      <!-- <view class="touch-item"> -->
+      <view class="detail" bindtap='openAnalysis' data-index="{{item.id}}">
+        <view class="img">
+          <!--type_id==2手动输入测量数据，1是称重数据  -->
+          <block wx:if="{{item.type_id==2}}">
+            <image src="../../imgs/pen.png"></image>
+          </block>
+          <block wx:else>
+            <image src="../../imgs/chen.png"></image>
+          </block>
+          <view class="date">{{item.time}}</view>
+        </view>
+        <view class="wbmi">
+          <view class="weight">
+            <text class="wt bm">体重</text>
+            <text class="num">{{item.weight}}</text>
+            <text class="num bm">kg</text>
+          </view>
+          <view class="bmi">
+            <text class="bm">BMI</text>
+            <text class="num">{{item.bmi}}</text>
+          </view>
+          <view class="right-arrows">
+            <image src="../../imgs/arrow-blue.png"></image>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="del" catchtap="del"  data-index="{{index}}">删除</view> -->
+      <view class="xian two" wx:if="{{index !==weightList.length-1}}">丨</view>
+    </view>
+    <view class="temporary" wx:if="{{!haveMore}}">暂无更多记录</view>
+  </view>
+</view>

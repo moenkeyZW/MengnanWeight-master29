@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="container" style='background-color: #fff'>
+  <view hidden='{{curIndex !== 0}}' style='width: 100vw'>
+    <view class='header'>
+      <view class='content'>
+        <view class='title'>今日步数</view>
+        <view class='count'>{{stepData.count}}</view>
+        <view class='goal'>目标：{{stepData.goalArr}}</view>
+      </view>
+    </view>
+    <view class='step'>
+      <view class='icon'>
+        <image src='../../imgs/step_1.png'></image>
+      </view>
+      <view class='record'>
+        <view>今天约走了{{stepData.distance}}千米</view>
+        <view>相当于节省了{{stepData.gas}}升汽油</view>
+      </view>
+    </view>
+    <view class='step'>
+      <view class='icon'>
+        <image src='../../imgs/step_2.png'></image>
+      </view>
+      <view class='record'>
+        <view>消耗了{{stepData.calorie}}千卡</view>
+        <view>相当于燃烧了{{stepData.fat}}克脂肪</view>
+      </view>
+    </view>
+  <picker bindchange="pickGoal" value='{{index||(stepData.goalArr? stepData.goalArr/1000-2: 0)||4}}' range="{{goalArr}}">
+    <view class='step' >
+      <view class='icon'>
+        <image src='../../imgs/step_3.png'></image>
+      </view>
+      <view class='record'>
+        <view>我的目标</view>
+        <view>{{stepData.goalArr}}步</view>
+      </view>
+   
+      <view class='open'>
+        <image src='../../imgs/arrow-blue.png'></image>
+      </view>
+    </view>
+   </picker>
+    <view class='step'>
+      <view class='icon'>
+        <image src='../../imgs/step_4.png'></image>
+      </view>
+      <view class='record'>
+        <view>运动来源</view>
+        <view>微信运动</view>
+      </view>
+    </view>
+  </view>
+  <view hidden='{{curIndex !== 1}}'>
+    <canvas canvas-id="stepChart" class="canvas" disable-scroll="true"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view class='date'>{{today}}</view>
+    <view style='display: flex'>
+      <view class='item'>
+        <view class='title'>里程</view>
+        <view class='number'>{{stepData.distance}}KM</view>
+      </view>
+      <view class='item'>
+        <view class='title'>能量消耗</view>
+        <view class='number'>{{stepData.calorie}}Kcal</view>
+      </view>
+    </view>
+
+  </view>
+  <view class='tab-bar'>
+    <view class='tab' data-index='{{0}}' bindtap='tabHandle'>
+      <view class='icon'>
+        <image src='../../imgs/today{{curIndex === 0? "_selected": ""}}.png'></image>
+      </view>
+      <view class='title {{curIndex === 0? "selected": ""}}'>今日</view>
+    </view>
+    <view class='tab' data-index='{{1}}' bindtap='tabHandle'>
+      <view class='icon'>
+        <image src='../../imgs/summary{{curIndex === 1? "_selected": ""}}.png'></image>
+      </view>
+      <view class='title {{curIndex === 1? "selected": ""}}'>统计</view>
+    </view>
+  </view>
+  <!-- <modal hidden="{{showChangeGoalModal}}" title='我的目标' bindcancel="cancel" bindconfirm="confirm">
+    <input placeholder='步数' style="text-align: center" bindinput='inputStep' type='number' value="{{stepData.goal}}"></input>
+  </modal> -->
+</view>
